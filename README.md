@@ -54,10 +54,6 @@ Este projeto busca oferecer uma solução adaptada à realidade desses produtore
 
 - Embrapa, Moura (2020), Martins (2019), Silva (2019), Google LLC (2023), entre outros.
 
-## 📝 Licença
-
-Este projeto é de caráter acadêmico e está disponível sob a licença MIT. Consulte o arquivo `LICENSE` para mais detalhes.
-
 ---
 
 > Projeto desenvolvido na FATEC Zona Leste - Curso de Análise e Desenvolvimento de Sistemas.
