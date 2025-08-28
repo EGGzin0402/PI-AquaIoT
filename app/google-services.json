@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "248788173164",
+    "firebase_url": "https://teste-aquaiot-default-rtdb.firebaseio.com",
+    "project_id": "teste-aquaiot",
+    "storage_bucket": "teste-aquaiot.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:248788173164:android:199eee778c41674dc1b349",
+        "android_client_info": {
+          "package_name": "com.example.aquaiot"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "248788173164-gvm1q70i35bgiun99o1paht8o8khs77c.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.aquaiot",
+            "certificate_hash": "95a66264750d950a0db37e338ebb4a24143480c7"
+          }
+        },
+        {
+          "client_id": "248788173164-dkkc5d0ihtm6hi45k4kh13jebdlsvo2t.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAq5wXxMjmeJcp25PqZQGuGeVdndX-1h7c"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "248788173164-dkkc5d0ihtm6hi45k4kh13jebdlsvo2t.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
