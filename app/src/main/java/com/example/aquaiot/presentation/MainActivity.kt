@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
+import androidx.compose.runtime.LaunchedEffect
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.lifecycle.compose.collectAsStateWithLifecycle
@@ -21,6 +22,8 @@ import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.compose.rememberNavController
 import com.example.aquaiot.R
+import com.example.aquaiot.presentation.screens.Home
+import com.example.aquaiot.presentation.screens.Perfil
 import com.example.aquaiot.presentation.sign_in.GoogleAuthUiClient
 import com.example.aquaiot.presentation.sign_in.SignInViewModel
 import com.example.aquaiot.presentation.ui.theme.AquaIoTTheme
@@ -52,6 +55,12 @@ class MainActivity : ComponentActivity() {
                             val viewModel = viewModel<SignInViewModel>()
                             val state by viewModel.state.collectAsStateWithLifecycle()
 
+                            LaunchedEffect(key1 = Unit) {
+                                if (googleAuthUiClient.getSignedInUser() != null) {
+                                    navController.navigate("home")
+                                }
+                            }
+
                             val launcher = rememberLauncherForActivityResult(
                                 contract = ActivityResultContracts.StartIntentSenderForResult(),
                                 onResult = { result ->
@@ -63,6 +72,18 @@ class MainActivity : ComponentActivity() {
                                     }
                                 }
                             )
+
+                            LaunchedEffect(
+                                key1 = state.isSignInSuccessful
+                            ) {
+                                if (state.isSignInSuccessful) {
+                                    navController.navigate("home") {
+                                        popUpTo("sign_in") {
+                                            inclusive = true
+                                        }
+                                    }
+                                }
+                            }
 
                             Login(
                                 state = state,
@@ -81,6 +102,35 @@ class MainActivity : ComponentActivity() {
 
 
                         }
+
+                        composable("perfil") {
+                            Perfil(
+                                userData = googleAuthUiClient.getSignedInUser(),
+                                onSignOut = {
+                                    lifecycleScope.launch {
+                                        googleAuthUiClient.signOut()
+                                        navController.navigate("sign_in") {
+                                            popUpTo("perfil") {
+                                                inclusive = true
+                                            }
+                                        }
+                                    }
+                                },
+                                navbarClick = {
+                                    navController.popBackStack()
+                                }
+                            )
+                        }
+
+                        composable("home") {
+                            Home(
+                                userData = googleAuthUiClient.getSignedInUser(),
+                                navbarClick = {
+                                    navController.navigate("perfil")
+                                }
+                            )
+                        }
+
                     }
                 }
             }

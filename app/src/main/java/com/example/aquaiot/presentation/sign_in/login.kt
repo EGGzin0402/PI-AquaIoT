@@ -293,7 +293,9 @@ fun Login(
             modifier = Modifier
                 .align(alignment = Alignment.TopCenter)
                 .requiredWidth(width = 200.dp)
-                .requiredHeight(height = 200.dp))
+                .requiredHeight(height = 200.dp)
+                .offset(y = (50).dp)
+        )
         Box(
             modifier = Modifier
                 .align(Alignment.BottomCenter)
@@ -318,10 +320,9 @@ fun Login(
         )
         Column(
             modifier = Modifier
-                .padding(start = 60.dp, end = 60.dp)
+                .padding(horizontal = 40.dp)
                 .fillMaxWidth()
-                .offset(y = 140.dp),
-            verticalArrangement = Arrangement.spacedBy(0.dp),
+                .offset(y = 80.dp),
             horizontalAlignment = Alignment.CenterHorizontally
         ) {
             Text(
@@ -374,10 +375,9 @@ fun Login(
             )
             Row(
                 verticalAlignment = Alignment.CenterVertically,
-                horizontalArrangement = Arrangement.Start,
+                horizontalArrangement = Arrangement.SpaceBetween,
                 modifier = Modifier
                     .fillMaxWidth()
-//                    .padding(start = 178.dp)
             ) {
                 TextField(
                     value = "",
@@ -389,6 +389,7 @@ fun Login(
                         .requiredHeight(height = 50.dp)
                         .clip(shape = RoundedCornerShape(100.dp))
                 )
+                Spacer(modifier = Modifier.requiredWidth(width = 20.dp))
                 Button(
                     onClick = onComplete,
                     shape = CircleShape,
@@ -407,7 +408,7 @@ fun Login(
                 }
             }
 
-            Spacer(modifier = Modifier.requiredHeight(height = 50.dp))
+            Spacer(modifier = Modifier.requiredHeight(height = 20.dp))
 
             Text(
                 text = "Ou",
@@ -418,14 +419,14 @@ fun Login(
                 ),
                 modifier = Modifier
             )
-            Spacer(modifier = Modifier.requiredHeight(height = 100.dp))
+            Spacer(modifier = Modifier.requiredHeight(height = 20.dp))
             Button(
                 onClick = onSignInClick,
                 shape = RoundedCornerShape(100.dp),
                 colors = ButtonDefaults.buttonColors(containerColor = Color(0xffd9d9d9)),
                 modifier = Modifier
-                    .requiredWidth(width = 726.dp)
-                    .requiredHeight(height = 125.dp)
+                    .fillMaxWidth()
+                    .requiredHeight(height = 70.dp)
             ) {
                 Row(
                     verticalAlignment = Alignment.CenterVertically,
@@ -435,17 +436,16 @@ fun Login(
                         painter = painterResource(id = R.drawable.googlelogo),
                         contentDescription = "image 2",
                         modifier = Modifier
-                            .requiredSize(size = 92.dp))
+                            .requiredSize(size = 48.dp))
                     Text(
                         text = "Entre com Google",
                         color = Color.Black,
                         style = TextStyle(
-                            fontSize = 48.sp,
+                            fontSize = 24.sp,
                             fontWeight = FontWeight.Bold
                         ),
                         modifier = Modifier
-                            .requiredWidth(width = 440.dp)
-                            .requiredHeight(height = 60.dp)
+                            .fillMaxWidth()
                     )
                 }
             }
